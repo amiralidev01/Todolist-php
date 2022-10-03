@@ -1,8 +1,3 @@
-<?php
-
-echo implode(" , ", $tasks);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,13 +26,29 @@ echo implode(" , ", $tasks);
                 </div>
             </div>
             <div class="menu">
-                <div class="title">Navigation</div>
+                <div class="title">Folders</div>
                 <ul>
-                    <li><i class="fa fa-home"></i>Home</li>
-                    <li><i class="fa fa-signal"></i>Activity</li>
-                    <li class="active"><i class="fa fa-tasks"></i>Manage Tasks</li>
-                    <li><i class="fa fa-envelope"></i>Messages</li>
+                    <?php /** @var TYPE_NAME $folders */
+                    foreach ($folders as $folder) : ?>
+
+                        <li>
+                            <a href="?folder_id=<?= $folder->id ?>"><i class="fa fa-folder"></i><?= $folder->name ?></a>
+                            <a href="?delete_folder=<?= $folder->id ?>" style="color: #f40000;"
+                               class="fa fa-trash-o trash-btn"></a>
+                        </li>
+
+                    <?php endforeach; ?>
+                    <li class="active"><i class="fa fa-folder"></i>CurrentFolder</li>
                 </ul>
+            </div>
+            <div style="margin-top: 30px;">
+                <input type="text"
+                       style="  border: none;   height: 32px;   margin-left: 6px;   border-radius: 3px;   outline: none;"
+                       placeholder="Add New Folder"/>
+                <button type="submit"
+                        style=" border: none; background-color: green; color: white; height: 32px; border-radius: 2px; width: 43px; ">
+                    +
+                </button>
             </div>
         </div>
         <div class="view">

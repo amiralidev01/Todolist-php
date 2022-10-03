@@ -134,6 +134,11 @@ body {
     padding-left: 0px;
 }
 
+.main .nav .menu ul li a {
+    text-decoration: none;
+    color: #20a4b8;
+}
+
 .main .nav .menu ul li {
     cursor: pointer;
     list-style: none;
@@ -302,4 +307,18 @@ body {
 
 .clear {
     clear: both;
+}
+
+
+.trash-btn {
+    float: right;
+    font-size: 16px;
+    margin-right: 7px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.trash-btn:hover {
+    font-weight: bolder;
+    color: #4f0000;
 }

@@ -1,11 +1,7 @@
 <?php
 
-function getCurrentUrl()
+function diePage($msg)
 {
-    return 1;
-}
-
-function power($a, $b)
-{
-    return $a ** $b;
+    echo $msg;
+    die;
 }
