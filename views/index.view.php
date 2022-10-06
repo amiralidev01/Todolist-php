@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +26,8 @@
             </div>
             <div class="menu">
                 <div class="title">Folders</div>
-                <ul>
+                <ul class="folder-list">
+                    <li class="active"><i class="fa fa-folder"></i>CurrentFolder</li>
                     <?php /** @var TYPE_NAME $folders */
                     foreach ($folders as $folder) : ?>
 
@@ -38,14 +38,16 @@
                         </li>
 
                     <?php endforeach; ?>
-                    <li class="active"><i class="fa fa-folder"></i>CurrentFolder</li>
+
                 </ul>
             </div>
             <div style="margin-top: 30px;">
                 <input type="text"
                        style="  border: none;   height: 32px;   margin-left: 6px;   border-radius: 3px;   outline: none;"
+                       id="addFolderInput"
                        placeholder="Add New Folder"/>
                 <button type="submit"
+                        id="addFolderBtn"
                         style=" border: none; background-color: green; color: white; height: 32px; border-radius: 2px; width: 43px; ">
                     +
                 </button>
@@ -96,7 +98,26 @@
 <!-- partial -->
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="../assets/js/script.js"></script>
-
+<script>
+    $(document).ready(function () {
+        $('#addFolderBtn').click(function (e) {
+            var input = $('input#addFolderInput');
+            // alert(input.val());
+            $.ajax({
+                url: 'process/ajaxHandler.php',
+                method: 'post',
+                data: {action: "addFolder", FolderName: input.val()},
+                success: function (response) {
+                    if (response == '1') {
+                        $('<li><a href="?folder_id="><i class="fa fa-folder"></i>' + input.val() + '</a></li>').appendTo('.folder-list');
+                    } else {
+                        alert(response);
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

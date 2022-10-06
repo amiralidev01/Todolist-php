@@ -1,15 +1,14 @@
 <?php
 
-
-include "libs/helpers.php";
 include "constants.php";
-include "config.php";
+include BASE_PATH . "libs/helpers.php";
+include BASE_PATH . "bootstrap/config.php";
 
 try {
     $pdo = new PDO("mysql:host={$dbConfig->host};dbname={$dbConfig->dbname}", $dbConfig->user, $dbConfig->pass);
 } catch (PDOException $e) {
     diePage("cloud not connect. error : " . $e->getMessage());
 }
-include "libs/lib-folder.php";
-include "libs/lib-task.php";
-include "libs/lib-auth.php";
+include BASE_PATH . "libs/lib-folder.php";
+include BASE_PATH . "libs/lib-task.php";
+include BASE_PATH . "libs/lib-auth.php";
