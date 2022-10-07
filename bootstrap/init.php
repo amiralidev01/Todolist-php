@@ -1,9 +1,8 @@
-<?php
+<?php 
 
 include "constants.php";
-include BASE_PATH . "libs/helpers.php";
 include BASE_PATH . "bootstrap/config.php";
-
+include BASE_PATH . "libs/helpers.php";
 try {
     $pdo = new PDO("mysql:host={$dbConfig->host};dbname={$dbConfig->dbname}", $dbConfig->user, $dbConfig->pass);
 } catch (PDOException $e) {

@@ -1,4 +1,4 @@
-<?php
+<?php defined('BASE_PATH') or die("Permission Denied!");
 
 function login($username, $password)
 {

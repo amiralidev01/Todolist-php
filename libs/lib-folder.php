@@ -1,6 +1,10 @@
 <?php
+defined('BASE_PATH') or die("Permission Denied!");
 
-function getFolders()
+/**
+ * @return bool|array
+ */
+function getFolders(): bool|array
 {
     global $pdo;
     $current_user_id = getCurrentUserId();
@@ -15,7 +19,11 @@ function getCurrentUserId()
     return 1;
 }
 
-function addFolders($folder_name)
+/**
+ * @param $folder_name
+ * @return int
+ */
+function addFolders($folder_name): int
 {
     global $pdo;
     $current_user_id = getCurrentUserId();
@@ -25,7 +33,11 @@ function addFolders($folder_name)
     return $stmt->rowCount();
 }
 
-function deleteFolder($folder_id)
+/**
+ * @param $folder_id
+ * @return int
+ */
+function deleteFolder($folder_id): int
 {
     global $pdo;
     $query = "DELETE FROM folders WHERE id = $folder_id";

@@ -1,7 +1,13 @@
-<?php
+<?php defined('BASE_PATH') or die("Permission Denied!");
 
 
-function getTasks()
+
+function getTasks(): bool|array
 {
-    return [1, 2, 3, 4, 5];
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $query = "SELECT * FROM tasks WHERE user_id = {$current_user_id}";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_OBJ);
 }

@@ -8,4 +8,5 @@ if (isset($_GET['delete_folder']) && is_numeric($_GET['delete_folder'])) {
 $tasks = getTasks();
 $folders = getFolders();
 
+
 include "views/index.view.php";
