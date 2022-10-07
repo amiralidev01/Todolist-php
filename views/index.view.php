@@ -27,16 +27,17 @@
             <div class="menu">
                 <div class="title">Folders</div>
                 <ul class="folder-list">
-                    <li class="active"><i class="fa fa-folder"></i>CurrentFolder</li>
+                    <li class="<?= isset($_GET['folder_id']) ? '' : 'active'; ?>"><i class="fa fa-folder"></i><a
+                                href="../index.php">All<a/></li>
                     <?php /** @var TYPE_NAME $folders */
                     foreach ($folders as $folder) : ?>
-
-                        <li>
+                        <li class="<?= (isset($_GET['folder_id']) and $_GET['folder_id'] == $folder->id) ? 'active' : ''; ?>">
                             <a href="?folder_id=<?= $folder->id ?>"><i class="fa fa-folder"></i><?= $folder->name ?></a>
-                            <a href="?delete_folder=<?= $folder->id ?>" style="color: #f40000;"
+                            <a href="?delete_folder=<?= $folder->id ?>"
+                               onclick="return confirm('Are you sure delete this folder?\n<?= $folder->name ?>')"
+                               style="color: #f40000;"
                                class="fa fa-trash-o trash-btn"></a>
                         </li>
-
                     <?php endforeach; ?>
 
                 </ul>
@@ -68,15 +69,17 @@
                     <ul>
                         <?php foreach ($tasks as $task) : ?>
                             <li class="<?= $task->is_done ? 'checked' : ''; ?>">
-
                                 <i class="fa <?= $task->is_done ? 'fa-check-square-o' : 'fa-square-o'; ?>"></i>
 
                                 <span><?= $task->title ?></span>
-                                <div class="info">
-                                    <span style="margin-right: 17px;">Created at : <?= $task->created_at ?></span>
+
+                                <div class="info" style="margin-right: 17px">
+
+                                    <span style=>Created at : <?= $task->created_at ?></span>
+
                                     <a href="?delete_task=<?= $task->id ?>"
-                                       onclick="return confirm('Are you sure delete this task?')" style="color: red;"><i
-                                                class="fa fa-trash-o"></i></a>
+                                       onclick="return confirm('Are you sure delete this task?<?= $task->title ?>')"
+                                       style="color: red;"><i class="fa fa-trash-o"></i></a>
                                 </div>
                             </li>
                         <?php endforeach; ?>

@@ -139,6 +139,14 @@ body {
     color: #20a4b8;
 }
 
+.notAcitve{
+    color: red;
+}
+
+.main .nav .menu ul li.active a {
+    color: #79BC46;
+}
+
 .main .nav .menu ul li {
     cursor: pointer;
     list-style: none;
@@ -320,5 +328,5 @@ body {
 
 .trash-btn:hover {
     font-weight: bolder;
-    color: #4f0000;
+    color: #c12929;
 }

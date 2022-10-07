@@ -1,10 +1,20 @@
 <?php
 include "bootstrap/init.php";
+
+
 if (isset($_GET['delete_folder']) && is_numeric($_GET['delete_folder'])) {
     $deletedCount = deleteFolder($_GET['delete_folder']);
-    echo "$deletedCount Folder SuccessFully Deleted.";
+//    echo "$deletedCount Folder SuccessFully Deleted.";
 }
-#connect to db and get tasks
+
+
+if (isset($_GET['delete_task']) && is_numeric($_GET['delete_task'])) {
+    $deletedCount = deleteTask($_GET['delete_task']);
+    var_dump($_GET['delete_task']);
+//    echo "$deletedCount Task SuccessFully Deleted.";
+}
+
+#connect to db and get data from database
 $tasks = getTasks();
 $folders = getFolders();
 

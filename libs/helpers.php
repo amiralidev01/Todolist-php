@@ -35,3 +35,9 @@ function dd($var): void
     echo "</pre>";
 
 }
+
+function getFolderId($var)
+{
+//        ($_GET["folder_id"] == $folder->id) ? '' :'';
+    return $_GET["folder_id"] == $var ? 'active' : '';
+}
