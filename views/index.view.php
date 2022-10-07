@@ -56,7 +56,9 @@
         </div>
         <div class="view">
             <div class="viewHeader">
-                <div class="title">Manage Tasks</div>
+                <input type="text" id="taskNameInput"
+                       style="position: relative; bottom: 20px; padding: 12px; width: 40%; border: 1px solid #d5d5d5; border-radius: 3px; outline: none; "
+                       name="" id="" placeholder="Type Press Enter For Add New Task...">
                 <div class="functions">
                     <div class="button active">Add New Task</div>
                     <div class="button">Completed</div>
@@ -111,6 +113,24 @@
                 }
             });
         });
+
+        $("#taskNameInput").on('keypress', function (e) {
+            if (e.which == 13) {
+                $.ajax({
+                    url: 'process/ajaxHandler.php',
+                    method: 'post',
+                    data: {action: "addTask", FolderId: <?=$_GET['folder_id']?>, TaskTitle: $("#taskNameInput").val()},
+                    success: function (response) {
+                        if (response == '1') {
+                            location.reload();
+                        } else {
+                            alert(response);
+                        }
+                    }
+                });
+            }
+        });
+        $("#taskNameInput").focus();
     });
 </script>
 </body>

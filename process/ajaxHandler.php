@@ -15,9 +15,19 @@ switch ($_POST['action']) {
             echo "نام فولدر باید بزرگ تر از دو حرف باشد";
             die();
         }
-        echo addFolders($_POST['FolderName']);
+        echo addFolder($_POST['FolderName']);
         break;
     case 'addTask':
+        $folderId = $_POST['FolderId'];
+        $taskTitle = $_POST['TaskTitle'];
+        if (!isset($folderId) || empty($folderId)) {
+            echo "فولدر را انتخاب کنید";
+        }
+        if (!isset($taskTitle) || strlen($taskTitle) < 3) {
+            echo "نام تسک باید بزرگ تر از دو حرف باشد";
+        }
+//        var_dump("New Task Added:", $_POST);
+        echo addTask($taskTitle, $folderId);
         break;
     default:
         diePage("Invalid Action!");

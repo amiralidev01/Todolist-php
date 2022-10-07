@@ -4,7 +4,7 @@ defined('BASE_PATH') or die("Permission Denied!");
 /**
  * @return bool|array
  */
-function getFolders(): bool|array
+function getFolder(): bool|array
 {
     global $pdo;
     $current_user_id = getCurrentUserId();
@@ -23,7 +23,7 @@ function getCurrentUserId()
  * @param $folder_name
  * @return int
  */
-function addFolders($folder_name): int
+function addFolder($folder_name): int
 {
     global $pdo;
     $current_user_id = getCurrentUserId();

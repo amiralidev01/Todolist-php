@@ -16,7 +16,7 @@ if (isset($_GET['delete_task']) && is_numeric($_GET['delete_task'])) {
 
 #connect to db and get data from database
 $tasks = getTasks();
-$folders = getFolders();
+$folders = getFolder();
 
 
 include "views/index.view.php";

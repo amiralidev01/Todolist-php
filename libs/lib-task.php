@@ -19,6 +19,16 @@ function getTasks(): bool|array
     return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
 
+function addTask($taskTitle, $folderId)
+{
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $query = "INSERT INTO tasks (title,folder_id,user_id) values (:title,:folder_id,:user_id)";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([':title' => $taskTitle, ':folder_id' => $folderId, ':user_id' => $current_user_id]);
+    return $stmt->rowCount();
+}
+
 /**
  * @param $task_id
  * @return int
