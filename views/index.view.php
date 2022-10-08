@@ -28,7 +28,8 @@
                 <div class="title">Folders</div>
                 <ul class="folder-list">
                     <li class="<?= isset($_GET['folder_id']) ? '' : 'active'; ?>"><i class="fa fa-folder"></i><a
-                                href="../index.php">All<a/></li>
+                                href="<?= site_url("") ?>">All<a/></li>
+
                     <?php /** @var TYPE_NAME $folders */
                     foreach ($folders as $folder) : ?>
                         <li class="<?= (isset($_GET['folder_id']) and $_GET['folder_id'] == $folder->id) ? 'active' : ''; ?>">
@@ -71,7 +72,8 @@
                     <ul>
                         <?php foreach ($tasks as $task) : ?>
                             <li class="<?= $task->is_done ? 'checked' : ''; ?>">
-                                <i class="fa <?= $task->is_done ? 'fa-check-square-o' : 'fa-square-o'; ?>"></i>
+                                <i data-taskID="<?= $task->id ?>"
+                                   class="isDone clickable fa <?= $task->is_done ? 'fa-check-square-o' : 'fa-square-o'; ?>"></i>
 
                                 <span><?= $task->title ?></span>
 
@@ -114,7 +116,7 @@
             });
         });
 
-        $("#taskNameInput").on('keypress', function (e) {
+        $('#taskNameInput').on('keypress', function (e) {
             if (e.which == 13) {
                 $.ajax({
                     url: 'process/ajaxHandler.php',
@@ -130,7 +132,19 @@
                 });
             }
         });
-        $("#taskNameInput").focus();
+        $('#taskNameInput').focus();
+
+        $('.isDone').click(function (e) {
+            var taskID = $(this).attr('data-TaskID');
+            $.ajax({
+                url: 'process/ajaxHandler.php',
+                method: 'post',
+                data: {action: "doneSwitch", TaskID: taskID},
+                success: function (response) {
+                    location.reload();
+                }
+            });
+        });
     });
 </script>
 </body>

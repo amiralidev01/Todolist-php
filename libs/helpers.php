@@ -33,11 +33,13 @@ function dd($var): void
     echo "<pre style='color: #00ff1c; background: #000; z-index: 999; position: relative; padding: 37px; width: 1100px; margin: 30px auto; border-radius: 4px; border-left: 5px solid #f00; font-weight: bold; height: 400px;'>";
     var_dump($var);
     echo "</pre>";
-
 }
 
-function getFolderId($var)
+/**
+ * @param $uri
+ * @return string
+ */
+function site_url($uri): string
 {
-//        ($_GET["folder_id"] == $folder->id) ? '' :'';
-    return $_GET["folder_id"] == $var ? 'active' : '';
+    return BASE_URL . $uri;
 }

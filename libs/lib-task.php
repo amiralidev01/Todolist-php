@@ -10,7 +10,6 @@ function getTasks(): bool|array
     $folder = $_GET['folder_id'] ?? null;
     $folderCondition = "";
     if (isset($folder) && is_numeric($folder)) {
-
         $folderCondition = "and folder_id = {$folder}";
     }
     $current_user_id = getCurrentUserId();
@@ -43,4 +42,19 @@ function deleteTask($task_id): int
     $stmt->execute();
     return $stmt->rowCount();
 //    var_dump($task_id);
+}
+
+/**
+ * @param $taskId
+ * @return int
+ */
+function doneSwitch($taskId): int
+{
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $query = "UPDATE tasks set is_done = 1 - is_done where user_id = :userID and id = :taskID";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([':taskID' => $taskId, ':userID' => $current_user_id]);
+    return $stmt->rowCount();
+
 }

@@ -10,6 +10,13 @@ if (!isset($_POST['action']) || empty($_POST['action'])) {
 }
 
 switch ($_POST['action']) {
+    case 'doneSwitch':
+        $taskID = $_POST['TaskID'];
+        if (!isset($taskID) || is_numeric($taskID)) {
+            echo "آیدی تسک معتبر نیست!";die;
+        }
+        doneSwitch($taskID);
+        break;
     case 'addFolder':
         if (!isset($_POST['FolderName']) || strlen($_POST['FolderName']) < 3) {
             echo "نام فولدر باید بزرگ تر از دو حرف باشد";
@@ -18,6 +25,8 @@ switch ($_POST['action']) {
         echo addFolder($_POST['FolderName']);
         break;
     case 'addTask':
+        var_dump($_POST);
+        die;
         $folderId = $_POST['FolderId'];
         $taskTitle = $_POST['TaskTitle'];
         if (!isset($folderId) || empty($folderId)) {

@@ -139,7 +139,7 @@ body {
     color: #20a4b8;
 }
 
-.notAcitve{
+.notAcitve {
     color: red;
 }
 
@@ -202,6 +202,11 @@ body {
 
 .main .view .viewHeader .functions {
     float: right;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    opacity: 0.6;
 }
 
 .main .view .viewHeader .functions .button {
