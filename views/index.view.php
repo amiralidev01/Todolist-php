@@ -57,9 +57,9 @@
         </div>
         <div class="view">
             <div class="viewHeader">
-                <input type="text" id="taskNameInput"
+                <input type="text"
                        style="position: relative; bottom: 20px; padding: 12px; width: 40%; border: 1px solid #d5d5d5; border-radius: 3px; outline: none; "
-                       name="" id="" placeholder="Type Press Enter For Add New Task...">
+                       name="" id="taskNameInput" placeholder="Type Press Enter For Add New Task...">
                 <div class="functions">
                     <div class="button active">Add New Task</div>
                     <div class="button">Completed</div>
@@ -95,7 +95,10 @@
     </div>
 </div>
 <!-- partial -->
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<!--<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../assets/js/script.js"></script>
 <script>
     $(document).ready(function () {
@@ -134,13 +137,15 @@
         });
         $('#taskNameInput').focus();
 
+
         $('.isDone').click(function (e) {
-            var taskID = $(this).attr('data-TaskID');
+            var tid = $(this).attr('data-taskId');
             $.ajax({
-                url: 'process/ajaxHandler.php',
-                method: 'post',
-                data: {action: "doneSwitch", TaskID: taskID},
+                url: "process/ajaxHandler.php",
+                method: "post",
+                data: {action: "doneSwitch", taskId: tid},
                 success: function (response) {
+                    // alert(response);
                     location.reload();
                 }
             });
