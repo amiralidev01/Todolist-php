@@ -13,7 +13,8 @@
 <div class="page">
     <div class="pageHeader">
         <div class="title">Dashboard</div>
-        <div class="userPanel"><i class="fa fa-chevron-down"></i><span class="username">John Doe </span><img
+        <div class="userPanel"><a href="../index.php?logout=1"><i class="fa fa-sign-out"></i></a><span
+                    class="username"><?= getLoggedIndUser()->name ?? 'Unknown' ?> </span><img
                     src="../assets/images/avatar12.jpg" width="40"
                     height="40"/></div>
     </div>

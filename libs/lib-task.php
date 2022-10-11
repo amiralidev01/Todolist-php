@@ -19,7 +19,12 @@ function getTasks(): bool|array
     return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
 
-function addTask($taskTitle, $folderId)
+/**
+ * @param $taskTitle
+ * @param $folderId
+ * @return int
+ */
+function addTask($taskTitle, $folderId): int
 {
     global $pdo;
     $current_user_id = getCurrentUserId();

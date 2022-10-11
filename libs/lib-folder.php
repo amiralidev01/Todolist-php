@@ -14,11 +14,6 @@ function getFolder(): bool|array
     return $stmt->fetchAll(PDO::FETCH_OBJ);
 }
 
-function getCurrentUserId()
-{
-    return 1;
-}
-
 /**
  * @param $folder_name
  * @return int
