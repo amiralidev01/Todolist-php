@@ -40,13 +40,20 @@ function login($email, $password): bool
  * @param $userData
  * @return int
  */
+
 function register($userData): int
 {
+//    global $pdo;
+//    $query = "INSERT INTO users(name,email,password) values (:name,:email,:password)";
+//    $stmt = $pdo->prepare($query);
+//    $passHash = password_hash($userData['password'], PASSWORD_DEFAULT);
+//    $stmt->execute([':name' => $userData['name'], ':email' => $userData['email'], ':password' => $userData['password']]);
+//    return $stmt->rowCount();
     global $pdo;
     $query = "INSERT INTO users(name,email,password) values (:name,:email,:password)";
     $stmt = $pdo->prepare($query);
     $passHash = password_hash($userData['password'], PASSWORD_DEFAULT);
-    $stmt->execute([':name' => $userData['name'], ':email' => $userData['email'], ':password' => $userData['password']]);
+    $stmt->execute([':name' => $userData['name'], ':email' => $userData['email'], ':password' => $passHash]);
     return $stmt->rowCount();
 }
 
