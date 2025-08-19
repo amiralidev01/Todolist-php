@@ -55,11 +55,13 @@ Todolist-php/
 │-- login.php     # User login page
 │-- register.php  # User registration page
 │-- todolist.sql  # SQL schema for tasks and users
-Usage Flow
-Register a new user.
 
-Login to access task list.
 
-Add, edit, or delete tasks dynamically via AJAX.
+<h1>Usage Flow</h1>
+1.Register a new user.
 
-See updates instantly without refreshing the page.
+2.Login to access task list.
+
+3.Add, edit, or delete tasks dynamically via AJAX.
+
+4.See updates instantly without refreshing the page.
