@@ -57,7 +57,8 @@ Todolist-php/
 │-- todolist.sql  # SQL schema for tasks and users
 
 
-<h1>Usage Flow</h1>
+Usage Flow
+
 1.Register a new user.
 
 2.Login to access task list.
