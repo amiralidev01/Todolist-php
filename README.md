@@ -55,7 +55,7 @@ Todolist-php/
 │-- login.php     # User login page
 │-- register.php  # User registration page
 │-- todolist.sql  # SQL schema for tasks and users
-
+```
 
 Usage Flow
 
